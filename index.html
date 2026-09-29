@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="StudyFlow — простой планировщик учебных задач и привычек.">
+  <title>StudyFlow — планируй учёбу легко</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b1020;--panel:#131a2e;--panel2:#19223a;--text:#f5f7ff;--muted:#aab4cc;--accent:#9b8cff;--mint:#70e1c1;--line:rgba(255,255,255,.1);--danger:#ff8d9a}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#25204a 0,transparent 40%),radial-gradient(ellipse at 100% 45%,#123a44 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+    .wrap{width:min(1080px,calc(100% - 36px));margin:0 auto}.top{padding:24px 0;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:12px;align-items:center;font-size:1.15rem;font-weight:800;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent),#5ecdbd);color:#101327;font-weight:900;font-size:1.15rem}.tag{border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 12px;font-size:.85rem}
+    .hero{padding:52px 0 34px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.eyebrow{color:var(--mint);font-size:.82rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800}.hero h1{font-size:clamp(2.5rem,7vw,4.8rem);line-height:1.03;letter-spacing:-.055em;margin:13px 0 18px;max-width:700px}.hero h1 span{color:var(--accent)}.lead{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0}.hero-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(155,140,255,.15),rgba(112,225,193,.07)),var(--panel);border-radius:26px;padding:25px;box-shadow:0 24px 80px #0003}.hero-card .label{color:var(--muted);font-size:.9rem}.big-num{font-size:3.2rem;line-height:1;font-weight:850;margin:8px 0}.progress{height:10px;border-radius:20px;background:#ffffff15;overflow:hidden;margin:18px 0 10px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--mint));border-radius:inherit;transition:width .3s}.small-row{display:flex;justify-content:space-between;color:var(--muted);font-size:.88rem}
+    main{padding:14px 0 64px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:20px 0 16px}.section-head h2{margin:0;font-size:1.55rem;letter-spacing:-.03em}.section-head p{margin:3px 0 0;color:var(--muted);font-size:.93rem}.board{display:grid;grid-template-columns:1fr 300px;gap:18px}.panel{background:rgba(19,26,46,.88);border:1px solid var(--line);border-radius:22px;padding:22px}.form{display:flex;gap:10px;margin:0 0 18px}.form input{flex:1;min-width:0;background:#0d1426;border:1px solid var(--line);border-radius:13px;padding:13px 14px;color:var(--text);font:inherit;outline:none}.form input:focus{border-color:var(--accent);box-shadow:0 0 0 3px #9b8cff22}.btn{border:0;border-radius:13px;padding:12px 16px;background:var(--accent);color:#111327;font:inherit;font-weight:800;cursor:pointer;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.filter{background:transparent;border:1px solid var(--line);color:var(--muted);padding:7px 11px;border-radius:999px;font:inherit;font-size:.85rem;cursor:pointer}.filter.active{background:#9b8cff1c;border-color:#9b8cff88;color:#e4dfff}.tasks{display:grid;gap:9px}.task{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid var(--line);background:#ffffff04;border-radius:14px}.task input{accent-color:#9b8cff;width:18px;height:18px;flex:none}.task-text{flex:1;overflow-wrap:anywhere}.task.done .task-text{text-decoration:line-through;color:#8190a9}.delete{border:0;background:transparent;color:#8190a9;font-size:1.2rem;cursor:pointer;padding:2px 5px}.delete:hover{color:var(--danger)}.empty{color:var(--muted);text-align:center;padding:24px 8px}.side h3{margin:0 0 15px;font-size:1.1rem}.tip{padding:14px;border-radius:15px;background:#9b8cff12;border:1px solid #9b8cff2b;margin-bottom:10px}.tip b{display:block;margin-bottom:4px}.tip p{margin:0;color:var(--muted);font-size:.9rem}.stat{display:flex;align-items:center;gap:12px;margin-top:16px;color:var(--muted)}.stat-icon{width:38px;height:38px;display:grid;place-items:center;background:#70e1c11a;border-radius:12px;font-size:1.1rem}.stat strong{display:block;color:var(--text);font-size:1.1rem}footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--muted);font-size:.85rem}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;gap:22px;padding:35px 0 24px}.hero-card{max-width:520px}.board{grid-template-columns:1fr}.side{order:-1}.top{padding-top:18px}.tag{font-size:.75rem}.panel{padding:16px}.section-head{align-items:start;flex-direction:column}}
+    @media(max-width:430px){.wrap{width:min(100% - 24px,1080px)}.form{flex-direction:column}.form .btn{width:100%}.hero h1{font-size:2.6rem}.tag{max-width:155px;text-align:center}}
+  </style>
+</head>
+<body>
+  <header class="wrap top">
+    <div class="brand"><div class="logo">S</div><span>StudyFlow</span></div>
+    <div class="tag">Твой спокойный ритм учёбы</div>
+  </header>
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div><div class="eyebrow">Учись без перегруза</div><h1 id="hero-title">Большие цели.<br><span>Маленькие шаги.</span></h1><p class="lead">StudyFlow помогает собрать учебные дела в одном месте, отмечать прогресс и не забывать про отдых.</p></div>
+    <div class="hero-card"><div class="label">Выполнено сегодня</div><div class="big-num"><span id="done-count">0</span><span style="color:var(--muted);font-size:1.5rem"> / <span id="total-count">0</span></span></div><div class="progress"><i id="progress-fill"></i></div><div class="small-row"><span>Продолжай в своём темпе</span><span id="percent">0%</span></div></div>
+  </section>
+  <main class="wrap">
+    <div class="section-head"><div><h2>Мой план</h2><p>Добавляй задачи и отмечай их по мере выполнения.</p></div></div>
+    <div class="board">
+      <section class="panel" aria-label="Список учебных задач">
+        <form class="form" id="task-form"><input id="task-input" type="text" maxlength="120" placeholder="Например: повторить тему по математике" aria-label="Новая задача"><button class="btn" type="submit">+ Добавить задачу</button></form>
+        <div class="filters" role="group" aria-label="Фильтр задач"><button class="filter active" data-filter="all">Все</button><button class="filter" data-filter="active">В процессе</button><button class="filter" data-filter="done">Выполненные</button></div>
+        <div class="tasks" id="task-list" aria-live="polite"></div>
+      </section>
+      <aside class="panel side"><h3>Небольшая подсказка</h3><div class="tip"><b>Разбей задачу на части</b><p>Короткий шаг проще начать и легче завершить.</p></div><div class="tip"><b>Делай паузы</b><p>Перерыв помогает сохранить внимание и силы.</p></div><div class="stat"><div class="stat-icon">✓</div><div><strong>Твой прогресс</strong><span>сохраняется на устройстве</span></div></div></aside>
+    </div>
+  </main>
+  <footer><div class="wrap foot"><span>StudyFlow · учебный проект</span><span>Простой план — больше ясности.</span></div></footer>
+  <script>
+    (() => {
+      const STORAGE_KEY = 'studyflow.tasks.v1';
+      const list = document.getElementById('task-list');
+      const form = document.getElementById('task-form');
+      const input = document.getElementById('task-input');
+      let tasks = [];
+      let filter = 'all';
+      try { tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); if (!Array.isArray(tasks)) tasks = []; } catch { tasks = []; }
+      const save = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); } catch {} };
+      function render() {
+        list.replaceChildren();
+        const shown = tasks.filter(t => filter === 'all' || (filter === 'done' ? t.done : !t.done));
+        if (!shown.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = tasks.length ? 'В этом разделе пока пусто.' : 'Пока задач нет — добавь первую!'; list.append(p); }
+        shown.forEach(task => {
+          const row = document.createElement('div'); row.className = 'task' + (task.done ? ' done' : '');
+          const check = document.createElement('input'); check.type = 'checkbox'; check.checked = !!task.done; check.setAttribute('aria-label', 'Отметить задачу выполненной');
+          check.addEventListener('change', () => { task.done = check.checked; save(); render(); });
+          const text = document.createElement('span'); text.className = 'task-text'; text.textContent = task.text;
+          const remove = document.createElement('button'); remove.className = 'delete'; remove.type = 'button'; remove.textContent = '×'; remove.setAttribute('aria-label', 'Удалить задачу');
+          remove.addEventListener('click', () => { tasks = tasks.filter(t => t.id !== task.id); save(); render(); });
+          row.append(check, text, remove); list.append(row);
+        });
+        const done = tasks.filter(t => t.done).length, total = tasks.length;
+        document.getElementById('done-count').textContent = done;
+        document.getElementById('total-count').textContent = total;
+        const pct = total ? Math.round(done / total * 100) : 0;
+        document.getElementById('percent').textContent = pct + '%';
+        document.getElementById('progress-fill').style.width = pct + '%';
+      }
+      form.addEventListener('submit', event => { event.preventDefault(); const text = input.value.trim(); if (!text) { input.focus(); return; } tasks.unshift({ id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random())), text, done: false }); input.value = ''; save(); render(); input.focus(); });
+      document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === button)); render(); }));
+      render();
+    })();
+  </script>
+</body>
+</html>
